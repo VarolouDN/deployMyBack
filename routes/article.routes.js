@@ -26,11 +26,16 @@ router.post(
       const { title, userId, name, text } = req.body;
       console.log(req.body);
       const article = new Article({ title, userId, name, text });
-
-      await article.save();
-      return res
-        .set("Access-Control-Allow-Origin", "*")
-        .json({ message: "Article was created" });
+      if (article) {
+        await article.save();
+        return res
+          .set("Access-Control-Allow-Origin", "*")
+          .json({ message: "Article was created", success: true });
+      } else {
+        return res
+          .set("Access-Control-Allow-Origin", "*")
+          .json({ message: "Article was not created" });
+      }
     } catch (e) {
       res.send({ message: "Server error" });
     }
