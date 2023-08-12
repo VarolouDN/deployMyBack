@@ -13,7 +13,7 @@ const corsParams={
 }
 //app.use(cors(corsParams))
 const PORT=/*process.env.Port || config.get('SERVER_PORT')*/5000
-
+const DB_URL="mongodb+srv://varolou:5gRLitUDwPmSmOAv@cloud.upwzkiy.mongodb.net/?retryWrites=true&w=majority"
 app.use(express.json());
 app.use("/api/auth",cors(corsParams),authRouter);
 app.use("/api/article",cors(corsParams),articleRouter);
@@ -25,7 +25,7 @@ app.use("/api/user",cors(corsParams),userRouter);
 const start=()=>{
 
     try{
-        mongoose.connect(config.get("DB_URL"))
+        mongoose.connect(config.get(DB_URL))
         app.listen(PORT,()=>{
             console.log(`Server works on PORT:${PORT} `)
         })
