@@ -13,7 +13,8 @@ const corsParams={
 }
 //app.use(cors(corsParams))
 const PORT=/*config.get('SERVER_PORT')*/process.env.SERVER_PORT || 5000
-const DB_URL=process.env.DB_URL || "mongodb+srv://varolou:5gRLitUDwPmSmOAv@cloud.upwzkiy.mongodb.net/?retryWrites=true&w=majority"
+const DB_URL=process.env.DB_URL || "mongodb+srv://varolou:AF9KvMedLj90iHGd@artd.nqpcmly.mongodb.net/?retryWrites=true&w=majority" /*"mongodb+srv://varolou:5gRLitUDwPmSmOAv@cloud.upwzkiy.mongodb.net/?retryWrites=true&w=majority"*/
+
 app.use(express.json());
 app.use("/api/auth",cors(corsParams),authRouter);
 app.use("/api/article",cors(corsParams),articleRouter);
