@@ -7,7 +7,7 @@ const userRouter=require("./routes/user.roures")
 const cors=require('cors')
 const app=express()
 const corsParams={
-    origin:["https://deploy-my-project-frontend-qxoq.vercel.app/"],
+    origin:["https://deploy-my-front.vercel.app/"],
     methods:["GET","POST","OPTIONS"],
     credentials:true
 }
