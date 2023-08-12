@@ -12,7 +12,7 @@ const corsParams={
     credentials:true
 }
 //app.use(cors(corsParams))
-const PORT=process.env.Port || config.get('SERVER_PORT')
+const PORT=/*process.env.Port || config.get('SERVER_PORT')*/5000
 
 app.use(express.json());
 app.use("/api/auth",cors(corsParams),authRouter);
