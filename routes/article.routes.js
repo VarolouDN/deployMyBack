@@ -24,7 +24,7 @@ router.post(
       }
 
       const { title, userId, name, text } = req.body;
-
+      console.log(req.body);
       const article = new Article({ title, userId, name, text });
 
       await article.save();
