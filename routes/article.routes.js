@@ -21,20 +21,7 @@ router.post("/create",[
             }
 
             const{title,userId,name,text} =req.body
-//===============================================
- // В этом блоке не  могу сравнить userId с id в базе данных.Блок не работает
-           /* if(!mongoose.Schema.Types.ObjectId.isValid(userId)){
-                return res.status(400).send('incorrect id of article')
-            }
-             const possibleUserId= await User.findById(userId)
-           // const possibleName= await User.findOne({name})
-             console.log(possibleUserId)
-            if(!possibleUserId){
-                return  res.set("Access-Control-Allow-Origin", 'http://localhost:3000')
-                    .status(400).json({message:`This user is not registered!!!`})
-            }
-            console.log(possibleUserId)*/
-//========================================================
+//////////////////////////////////////////////////////////////////////////
             const article= new Article({title,userId,name,text})
 
             await article.save()
