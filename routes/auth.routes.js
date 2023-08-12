@@ -27,17 +27,17 @@ router.post(`/registration`,[
         const possibleUserName= await User.findOne({name})
 
         if(possibleUserEmail){
-            return  res.set("Access-Control-Allow-Origin", 'https://myproject-front.vercel.app')
-                .status(400).json({message:`User with email ${email} already exists`})
+            return  res./*set("Access-Control-Allow-Origin", 'https://deploy-my-front.vercel.app/')
+                .*/status(400).json({message:`User with email ${email} already exists`})
         }if(possibleUserName){
-            return  res.set("Access-Control-Allow-Origin", 'https://myproject-front.vercel.app')
-                .status(400).json({message:`User with name ${name} already exists`})
+            return  res./*set("Access-Control-Allow-Origin", 'https://deploy-my-front.vercel.app/')
+                .*/status(400).json({message:`User with name ${name} already exists`})
         }
         const hashPassword=await bcrypt.hash(password,8)
      const user= new User({name,email,password:hashPassword})
         await user.save()
-        return res.set("Access-Control-Allow-Origin",'https://myproject-front.vercel.app' )
-            .json({message:"User was created",created:true})
+        return res./*set("Access-Control-Allow-Origin",'https://myproject-front.vercel.app' )
+            .*/json({message:"User was created",created:true})
     }catch(e){
         res.send({message:"Server error"})
     }

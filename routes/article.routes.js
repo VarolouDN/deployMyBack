@@ -38,7 +38,7 @@ router.post("/create",[
             const article= new Article({title,userId,name,text})
 
             await article.save()
-            return res.set("Access-Control-Allow-Origin","*").json({message:"Article was created"})
+            return res/*.set("Access-Control-Allow-Origin","*")*/.json({message:"Article was created"})
         }catch(e){
             res.send({message:"Server error"})
         }
@@ -49,7 +49,7 @@ router.get("/articles",
         try{
               const articles=await Article.find()
 
-            return res.set("Access-Control-Allow-Origin","*" ).
+            return res/*.set("Access-Control-Allow-Origin","https://deploy-my-front.vercel.app/" )*/.
             json(articles)
         }catch(e){
             res.send({message:"Server error"})
