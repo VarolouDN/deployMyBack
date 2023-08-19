@@ -51,7 +51,7 @@ router.get("/articles", async (req, res) => {
     res.send({ message: "Server error" });
   }
 });
-//Блок снизу не рабочий .1.Непонятно как сравнивать id.2.Как передать id через постман.Блок 3
+
 router.get("/articles/:id", async (req, res) => {
   try {
     const articleId = req.params.id;
@@ -150,7 +150,7 @@ router.delete("/articles/:id", async (req, res) => {
     res.send({ message: "Server error" });
   }
 });
-x;
-//Верхний блок не работает.Блок 3
+
+
 
 module.exports = router;
