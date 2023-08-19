@@ -74,6 +74,83 @@ router.get("/articles/:id", async (req, res) => {
     res.send({ message: "Server error" });
   }
 });
+router.put("/articles/:id", async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const articleId = req.params.id;
+    console.log(req.params.id);
+    if (!mongoose?.Types?.ObjectId?.isValid(articleId)) {
+      return res.status(400).json({
+        message: "given object id is not valid",
+      });
+    } else {
+      const article = await Article.findByIdAndUpdate(
+        articleId,
+        { title: req.body.title, text: req.body.text },
+        { new: true }
+      );
+      if (!article) {
+        return res
+          .status(404)
+          .json({ message: "Article with this id doesn't exist" });
+      }
+
+      return res
+        .set("Access-Control-Allow-Origin", "*")
+        .set("Access-Control-Allow-Headers", "Content-Type")
+        .json({
+          article: article,
+          message: "Article was updated",
+          success: true,
+        });
+    }
+  } catch (e) {
+    res.send({ message: "Server error" });
+  }
+});
+
+router.options("/articles/:id", (req, res) => {
+  console.log(req.params.id);
+  // Отправьте корректные CORS заголовки и успешный статус код (200)
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.set("Access-Control-Allow-Headers", "Content-Type");
+  res.status(200).send();
+});
+
+router.delete("/articles/:id", async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const articleId = req.params.id;
+    const userId = req.query.id;
+    console.log(req.params.userId);
+    console.log(req.query.id);
+    if (!mongoose?.Types?.ObjectId?.isValid(articleId)) {
+      return res.status(400).json({
+        message: "given object id is not valid",
+      });
+    } else {
+      const article = await Article.findByIdAndDelete(articleId);
+      if (!article) {
+        return res
+          .status(404)
+          .json({ message: "Article with this id doesn't exist" });
+      }
+
+      return res
+        .set("Access-Control-Allow-Origin", "*")
+        .set("Access-Control-Allow-Headers", "Content-Type")
+        .json({
+          article: article,
+          message: "Article was deleted",
+          success: true,
+        });
+    }
+  } catch (e) {
+    res.send({ message: "Server error" });
+  }
+});
+x;
 //Верхний блок не работает.Блок 3
 
 module.exports = router;
