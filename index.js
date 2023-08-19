@@ -6,12 +6,12 @@ const articleRouter = require("./routes/article.routes");
 const userRouter = require("./routes/user.roures");
 const cors = require("cors");
 const app = express();
-/*const corsParams = {
+const corsParams = {
   origin: ["https://deploy-my-front.vercel.app/"],
   methods: ["GET", "POST", "OPTIONS", "PUT", "DELETE"],
   credentials: true,
 };
-app.use(cors(corsParams));*/
+//app.use(cors(corsParams));
 const PORT = /*config.get('SERVER_PORT')*/ process.env.SERVER_PORT || 5000;
 const DB_URL =
   process.env.DB_URL ||
